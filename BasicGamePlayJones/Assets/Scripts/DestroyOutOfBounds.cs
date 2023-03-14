@@ -5,12 +5,15 @@ using UnityEngine;
 public class DestroyOutOfBounds : MonoBehaviour
 {
     private float topBound = 30;
-    private float lowerBound = -10;
-    private float leftBound = -45;
+    private float lowerBound = -20;
+    private float leftBound = -50;
+    private float rightBound = 50;
+
+    private GameManager gameManager;
 
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -19,13 +22,17 @@ public class DestroyOutOfBounds : MonoBehaviour
         {
             Destroy(gameObject);
         } 
-        else if(transform.position.z < lowerBound)
-        {
-            Debug.Log("Game Over!");
-            Destroy(gameObject);
-        }
         else if(transform.position.x < leftBound)
         {
+            Destroy(gameObject);
+        }
+        else if(transform.position.x > rightBound)
+        {
+            Destroy(gameObject);
+        }
+        else if(transform.position.z < lowerBound)
+        {
+            gameManager.AddLives(-1);
             Destroy(gameObject);
         }
     }

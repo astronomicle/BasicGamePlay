@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 15f;
     public float xRange = 20f;
 
+    public Transform projectileSpawnPoint;
+
     public GameObject projectilePrefab;
 
     void Start()
@@ -36,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectilePrefab.transform.rotation);
         }
     }
 }
