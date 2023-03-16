@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DetectCollision : MonoBehaviour
 {
+    private GameManager gameManager;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
